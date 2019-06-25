@@ -1,3 +1,5 @@
+import { ListaTareas, Tarea } from './model';
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ScrumBoard';
+  tareas = new ListaTareas();
+
+  agregarNuevaTarea(nombreTarea) {
+      if (nombreTarea != "") {
+          this.tareas.agregar(new Tarea(nombreTarea, false));
+      }
+  }
+
+  obtenerTareas(){
+    return this.tareas.items;
+  }
 }
